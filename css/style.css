@@ -156,6 +156,11 @@ header > nav > a {
     color: white;
 }
 
+header > nav > a.admin {
+    color: var(--backgroundColor);
+    text-decoration: underline;
+}
+
 /**
  * Coeur de page.
  */
@@ -335,6 +340,35 @@ a.info {
 .articleLine > div {
     padding: 20px;
     border: 1px solid var(--backgroundColor);
+}
+
+/* Monitoring */
+.monitoring {
+    width: 100%;
+    margin-top: 30px;
+}
+
+.monitoring h3 {
+    margin-bottom: 10px;
+}
+
+.monitoring table {
+    width: 100%;
+}
+
+.monitoring th {
+    font-weight: bold;
+    background-color: var(--headerColor);
+    color: white;
+    padding: 10px;
+}
+
+.monitoring td {
+    padding: 10px;
+}
+
+.monitoring tr:nth-child(even) {
+    background-color: var(--headerPaleColor);
 }
 
 /** 
