@@ -185,8 +185,21 @@ class AdminController {
     {
         $this->checkIfUserIsConnected();
 
+        // On récupère les paramètres de tri.
+        $sort = Utils::request("sort", "title");
+        $order = Utils::request("order", "asc");
+
+         // On récupère les articles.
+        $articleManager = new ArticleManager();
+        $articles = $articleManager->getAllArticles($sort, $order);
+        
+
+
+
         // On affiche la page de monitoring.
-        $view = new View("Monitoring");
-        $view->render("monitoring");
+        $view = new View("Monitoring" );
+        $view->render("monitoring", [
+            'articles' => $articles
+        ]);
     }
 }

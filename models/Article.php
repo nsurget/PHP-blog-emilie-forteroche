@@ -12,6 +12,7 @@
     private ?DateTime $dateCreation = null;
     private ?DateTime $dateUpdate = null; 
     private int $views = 0;
+
     private int $commentsCount = 0;
 
     /**
@@ -106,6 +107,15 @@
     }
 
     /**
+     * Convertit la date de création en format français.
+     * @return string
+     */
+    public function convertDateCreation() : string 
+    {
+        return $this->dateCreation->format('d/m/Y H:i');
+    }
+
+    /**
      * Setter pour la date de mise à jour. Si la date est une string, on la convertit en DateTime.
      * @param string|DateTime $dateUpdate
      * @param string $format : le format pour la convertion de la date si elle est une string.
@@ -148,19 +158,11 @@
         $this->views = $views;
     }
 
-    /**
-     * Getter pour le nombre de commentaires.
-     * @return int
-     */
     public function getCommentsCount() : int 
     {
         return $this->commentsCount;
     }
 
-    /**
-     * Setter pour le nombre de commentaires.
-     * @param int $commentsCount
-     */
     public function setCommentsCount(int $commentsCount) : void 
     {
         $this->commentsCount = $commentsCount;

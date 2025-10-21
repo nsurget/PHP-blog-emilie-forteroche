@@ -34,6 +34,14 @@ class ArticleController
         $commentManager = new CommentManager();
         $comments = $commentManager->getAllCommentsByArticleId($id);
 
+        // Incrémentation du nombre de vues de l'article.
+        $identifier = "article_view_" . $id;
+        if (!isset($_SESSION[$identifier])) {
+            $_SESSION[$identifier] = true;
+            $articleManager->incrementViews($id);
+        }
+        
+
         $view = new View($article->getTitle());
         $view->render("detailArticle", ['article' => $article, 'comments' => $comments]);
     }

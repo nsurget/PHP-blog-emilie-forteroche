@@ -21,6 +21,7 @@
     --quoteColor: #c5cbe4;
     --commentPaleColor: #99a140;
     --commentColor: #255E33;
+    --linkColor: #b07300;
 }
 
 /**
@@ -369,6 +370,20 @@ a.info {
 
 .monitoring tr:nth-child(even) {
     background-color: var(--headerPaleColor);
+}
+
+.monitoring .sort {
+    padding: 3px;
+    cursor: pointer;
+}
+
+.monitoring .sort:hover {
+    text-decoration: none;
+}
+
+.monitoring a:hover {
+    text-decoration: underline;
+    color: var(--titleColor);
 }
 
 /** 
