@@ -200,7 +200,7 @@ article > h2 {
     color: var(--titleColor);
 }
 
-article > .quotation {
+article > a .quotation {
     /* Placement du guillemet initial de manière à ce que le texte s'affiche "autour" */
     float: left;
     height: 51px;
@@ -212,7 +212,7 @@ article > .quotation {
     color: var(--quoteColor);
 }
 
-.articleList > article:hover .quotation {
+.articleList > article:hover a .quotation {
     color: var(--commentPaleColor);
 }
 
@@ -269,6 +269,27 @@ a.info {
 .comments li {
     display: flex;
     margin-bottom: 20px;
+}
+
+.comments .admin {
+   margin-top: 5px;
+}
+
+/* Cache tous les éléments de confirmation SAUF le bouton initial .deleteCheck */
+.admin.hidden-confirmation > *:not(.deleteCheck) {
+    display: none;
+}
+
+.comments .admin a {
+
+    margin-left: auto;
+    color: var(--titleColor);
+    margin-top: 5px;
+   
+}
+
+.comments .admin a:hover {
+    text-decoration: underline;
 }
 
 .comments .smiley {

@@ -1,8 +1,8 @@
 <?php
-    /**
-     * Ce template affiche un article et ses commentaires.
-     * Il affiche également un formulaire pour ajouter un commentaire.
-     */
+/**
+ * Ce template affiche un article et ses commentaires.
+ * Il affiche également un formulaire pour ajouter un commentaire.
+ */
 ?>
 
 <article class="mainArticle">
@@ -19,23 +19,31 @@
 </article>
 
 <div class="comments">
-    <h2 class="commentsTitle">Vos Commentaires</h2>
-    <?php 
-        if (empty($comments)) {
-            echo '<p class="info">Aucun commentaire pour cet article.</p>';
-        } else {
-            echo '<ul>';
-            foreach ($comments as $comment) {
-                echo '<li>';
-                echo '  <div class="smiley">☻</div>';
-                echo '  <div class="detailComment">';
-                echo '      <h3 class="info">Le ' . Utils::convertDateToFrenchFormat($comment->getDateCreation()) . ", " . Utils::format($comment->getPseudo()) . ' a écrit :</h3>';
-                echo '      <p class="content">' . Utils::format($comment->getContent()) . '</p>';
-                echo '  </div>';
-                echo '</li>';
-            }               
-            echo '</ul>';
-        } 
+    <h2 class="commentsTitle" id="commentsTitle">Vos Commentaires</h2>
+    <?php
+    if (empty($comments)) {
+        echo '<p class="info">Aucun commentaire pour cet article.</p>';
+    } else {
+        echo '<ul>';
+        foreach ($comments as $comment) {
+            echo '<li>';
+            echo '  <div class="smiley">☻</div>';
+
+            echo '  <div class="detailComment">';
+            echo '      <h3 class="info">Le ' . Utils::convertDateToFrenchFormat($comment->getDateCreation()) . ", " . Utils::format($comment->getPseudo()) . ' a écrit :</h3>';
+            echo '      <p class="content">' . Utils::format($comment->getContent()) . '</p>';
+            if ($admin) {
+                echo '<div class="admin">';
+                echo ' <a href="#" class="deleteCheck">Supprimer le commentaire</a>';
+                echo ' <p class="info">Etes-vous sûr de vouloir supprimer ce commentaire ?</p> <a class="delete" href="index.php?action=deleteComment&id=' . $comment->getId() . '&post_id=' . $comment->getIdArticle() . '">Oui</a> <a class="stop" href="#">Non</a>';
+                echo '</div>';
+            }
+            echo '  </div>';
+
+            echo '</li>';
+        }
+        echo '</ul>';
+    }
     ?>
 
     <form action="index.php" method="post" class="foldedCorner">

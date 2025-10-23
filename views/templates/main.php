@@ -44,5 +44,6 @@
         <p>Copyright © Emilie Forteroche 2023 - Openclassrooms - <a href="index.php?action=admin">Admin</a>
     </footer>
 
+    <script src="./js/script.js"></script>
 </body>
 </html>
